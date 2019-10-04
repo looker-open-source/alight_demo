@@ -197,23 +197,23 @@ view: v_oneview_media {
     }
 
     allowed_value: {
-      label: "Conversion Rate"
-      value: "Conversion Rate"
+      label: "Conversion_Rate"
+      value: "Conversion_Rate"
     }
 
     allowed_value: {
-      label: "Cost per Conversion"
-      value: "Cost per Conversion"
+      label: "Cost_per_Conversion"
+      value: "Cost_per_Conversion"
     }
 
     allowed_value: {
-      label: "Click through Rate"
-      value: "Click through Rate"
+      label: "Click_through_Rate"
+      value: "Click_through_Rate"
     }
 
     allowed_value: {
-      label: "Cost per Click"
-      value: "Cost per Click"
+      label: "Cost_per_Click"
+      value: "Cost_per_Click"
     }
 
     allowed_value: {
@@ -242,23 +242,23 @@ view: v_oneview_media {
     }
 
     allowed_value: {
-      label: "Conversion Rate"
-      value: "Conversion Rate"
+      label: "Conversion_Rate"
+      value: "Conversion_Rate"
     }
 
     allowed_value: {
-      label: "Cost per Conversion"
-      value: "Cost per Conversion"
+      label: "Cost_per_Conversion"
+      value: "Cost_per_Conversion"
     }
 
     allowed_value: {
-      label: "Click through Rate"
-      value: "Click through Rate"
+      label: "Click_through_Rate"
+      value: "Click_through_Rate"
     }
 
     allowed_value: {
-      label: "Cost per Click"
-      value: "Cost per Click"
+      label: "Cost_per_Click"
+      value: "Cost_per_Click"
     }
 
     allowed_value: {
@@ -275,7 +275,7 @@ view: v_oneview_media {
   filter: newmetric {
 
     type: string
-    suggestions: ["Clicks","Conversion","Cost Per Click"]
+    suggestions: ["Clicks","Conversion","Cost_Per_Click"]
   }
 
   measure: filtered_metric1 {
@@ -284,8 +284,8 @@ view: v_oneview_media {
     sql: CASE WHEN '{% parameter metric1 %}' = 'Impression' THEN ${total_impressions}
           WHEN '{% parameter metric1 %}' = 'Cost' THEN ${total_cost}
           WHEN '{% parameter metric1 %}' = 'Clicks' THEN ${total_clicks}
-          WHEN '{% parameter metric1 %}' = 'Cost per Click' THEN ${cost_per_click}
-          WHEN '{% parameter metric1 %}' = 'Click through Rate' THEN ${click_through_rate}
+          WHEN '{% parameter metric1 %}' = 'Cost_per_Click' THEN ${cost_per_click}
+          WHEN '{% parameter metric1 %}' = 'Click_through_Rate' THEN ${click_through_rate}
           WHEN '{% parameter metric1 %}' = 'Conversion' THEN ${v_oneview_media_conversion.total_conversions}
           END ;;
   }
@@ -296,8 +296,8 @@ view: v_oneview_media {
     sql: CASE WHEN '{% parameter metric2 %}' = 'Impression' THEN ${total_impressions}
           WHEN '{% parameter metric2 %}' = 'Cost' THEN ${total_cost}
           WHEN '{% parameter metric2 %}' = 'Clicks' THEN ${total_clicks}
-          WHEN '{% parameter metric2 %}' = 'Cost per Click' THEN ${cost_per_click}
-          WHEN '{% parameter metric2 %}' = 'Click through Rate' THEN ${click_through_rate}
+          WHEN '{% parameter metric2 %}' = 'Cost_per_Click' THEN ${cost_per_click}
+          WHEN '{% parameter metric2 %}' = 'Click_through_Rate' THEN ${click_through_rate}
           WHEN '{% parameter metric1 %}' = 'Conversion' THEN ${v_oneview_media_conversion.total_conversions}
 
           END ;;
