@@ -277,7 +277,7 @@ view: v_oneview_media {
           WHEN '{% parameter metric2 %}' = 'Clicks' THEN ${total_clicks}
           WHEN '{% parameter metric2 %}' = 'Cost_per_Click' THEN ${cost_per_click}
           WHEN '{% parameter metric2 %}' = 'Click_through_Rate' THEN ${click_through_rate}
-          WHEN '{% parameter metric1 %}' = 'Conversion' THEN ${v_oneview_media_conversion.total_conversions}
+          WHEN '{% parameter metric2 %}' = 'Conversion' THEN ${v_oneview_media_conversion.total_conversions}
 
           END ;;
   }
