@@ -178,7 +178,6 @@ view: v_oneview_media {
     value_format_name: big_money_format
   }
 
-
   #####################
   # DYNAMIC FILTERING #
   #####################
@@ -194,16 +193,6 @@ view: v_oneview_media {
     allowed_value: {
       label: "Cost"
       value: "Cost"
-    }
-
-    allowed_value: {
-      label: "Conversion Rate"
-      value: "Conversion_Rate"
-    }
-
-    allowed_value: {
-      label: "Cost per Conversion"
-      value: "Cost_per_Conversion"
     }
 
     allowed_value: {
@@ -242,21 +231,6 @@ view: v_oneview_media {
     }
 
     allowed_value: {
-      label: "Conversion Rate"
-      value: "Conversion_Rate"
-    }
-
-    allowed_value: {
-      label: "Conversion_Rate"
-      value: "Conversion_Rate"
-    }
-
-    allowed_value: {
-      label: "Cost per Conversion"
-      value: "Cost_per_Conversion"
-    }
-
-    allowed_value: {
       label: "Click through Rate"
       value: "Click_through_Rate"
     }
@@ -277,11 +251,11 @@ view: v_oneview_media {
     }
   }
 
-  filter: newmetric {
-
-    type: string
-    suggestions: ["Clicks","Conversion","Cost_Per_Click"]
-  }
+#   filter: newmetric {
+#
+#     type: string
+#     suggestions: ["Clicks","Conversion","Cost_Per_Click"]
+#   }
 
   measure: filtered_metric1 {
     type: number
@@ -307,4 +281,5 @@ view: v_oneview_media {
 
           END ;;
   }
+
 }
