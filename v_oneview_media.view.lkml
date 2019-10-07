@@ -197,22 +197,22 @@ view: v_oneview_media {
     }
 
     allowed_value: {
-      label: "Conversion_Rate"
+      label: "Conversion Rate"
       value: "Conversion_Rate"
     }
 
     allowed_value: {
-      label: "Cost_per_Conversion"
+      label: "Cost per Conversion"
       value: "Cost_per_Conversion"
     }
 
     allowed_value: {
-      label: "Click_through_Rate"
+      label: "Click through Rate"
       value: "Click_through_Rate"
     }
 
     allowed_value: {
-      label: "Cost_per_Click"
+      label: "Cost per Click"
       value: "Cost_per_Click"
     }
 
@@ -242,22 +242,22 @@ view: v_oneview_media {
     }
 
     allowed_value: {
-      label: "Conversion_Rate"
+      label: "Conversion Rate"
       value: "Conversion_Rate"
     }
 
     allowed_value: {
-      label: "Cost_per_Conversion"
+      label: "Cost per Conversion"
       value: "Cost_per_Conversion"
     }
 
     allowed_value: {
-      label: "Click_through_Rate"
+      label: "Click through Rate"
       value: "Click_through_Rate"
     }
 
     allowed_value: {
-      label: "Cost_per_Click"
+      label: "Cost per Click"
       value: "Cost_per_Click"
     }
 
