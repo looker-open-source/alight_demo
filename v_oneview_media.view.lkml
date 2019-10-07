@@ -247,6 +247,11 @@ view: v_oneview_media {
     }
 
     allowed_value: {
+      label: "Conversion_Rate"
+      value: "Conversion_Rate"
+    }
+
+    allowed_value: {
       label: "Cost per Conversion"
       value: "Cost_per_Conversion"
     }
