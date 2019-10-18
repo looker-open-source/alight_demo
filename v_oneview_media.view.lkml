@@ -167,7 +167,7 @@ view: v_oneview_media {
     sql: CASE WHEN ${total_impressions} != 0 THEN 1.0* ${total_clicks}/${total_impressions}
           ELSE 0
           END;;
-#     value_format_name:percent_1
+     value_format_name:percent_1
   }
 
   measure: cost_per_conversion {
