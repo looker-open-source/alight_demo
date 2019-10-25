@@ -282,4 +282,51 @@ view: v_oneview_media {
           END ;;
   }
 
+
+
+
+  parameter: timeframe_picker {
+    label: "Date Granularity"
+    type: string
+    allowed_value: { value: "Date" }
+    allowed_value: { value: "Week" }
+    allowed_value: { value: "Month" }
+    allowed_value: { value: "Quarter" }
+    default_value: "Date"
+  }
+
+
+  dimension: dynamic_timeframe {
+    type: string
+    sql:
+    CASE
+    WHEN {% parameter timeframe_picker %} = 'Date' THEN (TO_CHAR(DATE_TRUNC('day', v_oneview_media.report_date ), 'YYYY-MM-DD'))
+    WHEN {% parameter timeframe_picker %} = 'Week' THEN ${report_week}
+    WHEN {% parameter timeframe_picker %} = 'Month' THEN ${report_month}
+    WHEN {% parameter timeframe_picker %} = 'Quarter' THEN ${report_quarter}
+
+    END ;;
+  }
+
+
+  parameter: performance_metric_by {
+    label: "Source Granularity"
+    type: string
+    allowed_value: { value: "Source" }
+    allowed_value: { value: "Channel" }
+    allowed_value: { value: "Campaign" }
+    default_value: "Source"
+  }
+
+
+  dimension: dynamic_performance {
+    type: string
+    sql:
+    CASE
+    WHEN {% parameter performance_metric_by %} = 'Source' THEN ${data_source}
+    WHEN {% parameter performance_metric_by %} = 'Channel' THEN ${channel}
+    WHEN {% parameter performance_metric_by %} = 'Campaign' THEN ${campaign}
+    END ;;
+  }
+
 }
