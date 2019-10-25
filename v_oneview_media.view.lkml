@@ -136,6 +136,7 @@ view: v_oneview_media {
     type: sum
     value_format_name: big_int_format
     sql: ${impressions} ;;
+    drill_fields: [campaign, total_impressions]
   }
 
   measure: total_clicks {
@@ -144,6 +145,7 @@ view: v_oneview_media {
     type: sum
     value_format_name: big_int_format
     sql: ${clicks} ;;
+    drill_fields: [campaign, total_clicks]
   }
 
   measure: total_cost {
@@ -152,6 +154,7 @@ view: v_oneview_media {
     type: sum
     sql: ${cost} ;;
     value_format_name: big_money_format
+    drill_fields: [campaign, total_cost]
   }
 
   measure: cost_per_click {
@@ -160,6 +163,7 @@ view: v_oneview_media {
           ELSE 0
           END ;;
     value_format_name: big_money_format
+    drill_fields: [campaign, cost_per_click]
   }
 
   measure: click_through_rate {
@@ -168,6 +172,7 @@ view: v_oneview_media {
           ELSE 0
           END;;
      value_format_name:percent_1
+    drill_fields: [campaign, click_through_rate]
   }
 
   measure: cost_per_conversion {
@@ -176,6 +181,8 @@ view: v_oneview_media {
           ELSE 0
           END;;
     value_format_name: big_money_format
+    drill_fields: [campaign, cost_per_conversion]
+
   }
 
   #####################
