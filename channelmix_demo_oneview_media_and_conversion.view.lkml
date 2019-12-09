@@ -1,14 +1,12 @@
-#Paid Media Dashboard
-view: v_oneview_media {
-  sql_table_name: channelmix_demo.v_oneview_media ;;
-  label: "Paid Media"
+view: channelmix_demo_oneview_media_and_conversion {
+  sql_table_name: channelmix_demo.channelmix_demo_oneview_media_and_conversion ;;
+
 
   dimension: primary_key {
     hidden: yes
     primary_key: yes
     sql:${account} || ${campaign} || ${ad_group} || ${data_source} || ${channel} || ${platform} || ${channelmix_profile} || ${report_raw};;
-    }
-
+  }
   dimension: account {
     type: string
     sql: ${TABLE}.account ;;
@@ -37,6 +35,11 @@ view: v_oneview_media {
   dimension: clicks {
     type: number
     sql: ${TABLE}.clicks ;;
+  }
+
+  dimension: conversion_name {
+    type: string
+    sql: ${TABLE}.conversion_name ;;
   }
 
   dimension: conversion_value {
@@ -69,9 +72,6 @@ view: v_oneview_media {
     timeframes: [
       raw,
       time,
-      minute,
-      millisecond,
-      second,
       date,
       week,
       month,
@@ -90,9 +90,6 @@ view: v_oneview_media {
     type: time
     timeframes: [
       raw,
-      second,
-      minute,
-      hour,
       date,
       week,
       month,
@@ -103,6 +100,7 @@ view: v_oneview_media {
     datatype: date
     sql: ${TABLE}.report_date ;;
   }
+
 
   filter: previous_period_filter {
     type: date
@@ -121,12 +119,14 @@ view: v_oneview_media {
   }
 
 
+
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [conversion_name]
   }
 
-  ####################
+
+####################
   # CUSTOM MEASURES #
   ####################
 
@@ -171,18 +171,36 @@ view: v_oneview_media {
     sql: CASE WHEN ${total_impressions} != 0 THEN 1.0* ${total_clicks}/${total_impressions}
           ELSE 0
           END;;
-    value_format_name: big_int_format
+    value_format_name:percent_1
     drill_fields: [campaign, click_through_rate]
   }
 
   measure: cost_per_conversion {
     type: number
-    sql: CASE WHEN ${v_oneview_media_conversion.total_conversions} != 0 THEN 1.0* ${total_cost}/${v_oneview_media_conversion.total_conversions}
+
+     sql: CASE WHEN (${total_conversions} != 0) THEN 1.0* (${total_cost}/${total_conversions})
           ELSE 0
-          END;;
+           END;;
     value_format_name: big_money_format
     drill_fields: [campaign, cost_per_conversion]
 
+  }
+
+  measure: total_conversions {
+    label: "Conversion"
+    description: "Total Conversion"
+    type: sum
+    sql: ${conversions};;
+    value_format_name: big_int_format
+    drill_fields: [campaign, total_conversions]
+
+  }
+
+  measure: conversion_rate {
+    type: number
+    sql: ${total_conversions}/NULLIF(${total_clicks},0) ;;
+    value_format_name: percent_1
+    drill_fields: [campaign, total_conversions]
   }
 
   #####################
@@ -272,7 +290,7 @@ view: v_oneview_media {
           WHEN '{% parameter metric1 %}' = 'Clicks' THEN ${total_clicks}
           WHEN '{% parameter metric1 %}' = 'Cost_per_Click' THEN ${cost_per_click}
           WHEN '{% parameter metric1 %}' = 'Click_through_Rate' THEN ${click_through_rate}
-          WHEN '{% parameter metric1 %}' = 'Conversion' THEN ${v_oneview_media_conversion.total_conversions}
+          WHEN '{% parameter metric1 %}' = 'Conversion' THEN ${total_conversions}
           END ;;
   }
 
@@ -284,7 +302,7 @@ view: v_oneview_media {
           WHEN '{% parameter metric2 %}' = 'Clicks' THEN ${total_clicks}
           WHEN '{% parameter metric2 %}' = 'Cost_per_Click' THEN ${cost_per_click}
           WHEN '{% parameter metric2 %}' = 'Click_through_Rate' THEN ${click_through_rate}
-          WHEN '{% parameter metric2 %}' = 'Conversion' THEN ${v_oneview_media_conversion.total_conversions}
+          WHEN '{% parameter metric2 %}' = 'Conversion' THEN ${total_conversions}
 
           END ;;
   }
@@ -307,7 +325,7 @@ view: v_oneview_media {
     type: string
     sql:
     CASE
-    WHEN {% parameter timeframe_picker %} = 'Date' THEN (TO_CHAR(DATE_TRUNC('day', v_oneview_media.report_date ), 'YYYY-MM-DD'))
+    WHEN {% parameter timeframe_picker %} = 'Date' THEN (TO_CHAR(DATE_TRUNC('day', channelmix_demo_oneview_media_and_conversion.report_date ), 'YYYY-MM-DD'))
     WHEN {% parameter timeframe_picker %} = 'Week' THEN ${report_week}
     WHEN {% parameter timeframe_picker %} = 'Month' THEN ${report_month}
     WHEN {% parameter timeframe_picker %} = 'Quarter' THEN ${report_quarter}
@@ -335,5 +353,4 @@ view: v_oneview_media {
     WHEN {% parameter performance_metric_by %} = 'Campaign' THEN ${campaign}
     END ;;
   }
-
 }
