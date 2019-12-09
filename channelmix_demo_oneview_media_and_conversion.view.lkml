@@ -335,7 +335,7 @@ view: channelmix_demo_oneview_media_and_conversion {
 
 
   parameter: performance_metric_by {
-    label: "Source Granularity"
+    label: "Performance Metric"
     type: string
     allowed_value: { value: "Source" }
     allowed_value: { value: "Channel" }
