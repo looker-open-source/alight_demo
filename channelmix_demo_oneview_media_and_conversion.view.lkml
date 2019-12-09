@@ -55,6 +55,7 @@ view: channelmix_demo_oneview_media_and_conversion {
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
+    value_format_name: big_money_format
   }
 
   dimension: data_source {
