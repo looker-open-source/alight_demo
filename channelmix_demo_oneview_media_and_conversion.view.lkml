@@ -293,6 +293,8 @@ view: channelmix_demo_oneview_media_and_conversion {
           WHEN '{% parameter metric1 %}' = 'Click_through_Rate' THEN ${click_through_rate}
           WHEN '{% parameter metric1 %}' = 'Conversion' THEN ${total_conversions}
           END ;;
+    value_format: "0.00"
+    html: {{rendered_value}} ;;
   }
 
   measure: filtered_metric2 {
