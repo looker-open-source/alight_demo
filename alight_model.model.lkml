@@ -18,6 +18,8 @@ include: "*.view.lkml"                       # include all views in this project
 #   }
 # }
 
+week_start_day: sunday
+
 named_value_format: big_int_format {
   value_format: "[>=1000000]0.00,,\"M\";[>=1000]0.00,\"K\";0.000"
   strict_value_format: yes
