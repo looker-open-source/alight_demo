@@ -1,5 +1,5 @@
 view: channelmix_demo_oneview_media_and_conversion {
-  sql_table_name: channelmix_demo.channelmix_demo_oneview_media_and_conversion ;;
+  sql_table_name: @{SCHEMA_NAME}.channelmix_demo_oneview_media_and_conversion ;;
 
 
   dimension: primary_key {

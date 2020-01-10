@@ -31,3 +31,5 @@ named_value_format: big_money_format {
 }
 
 explore: channelmix_demo_oneview_media_and_conversion {}
+
+explore: channelmix_demo_oneview_paid_search_ad {}
