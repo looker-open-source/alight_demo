@@ -1,5 +1,5 @@
-view: channelmix_demo_oneview_media_and_conversion {
-  sql_table_name: @{SCHEMA_NAME}.channelmix_demo_oneview_media_and_conversion ;;
+view: v_oneview_media_and_conversion {
+  sql_table_name: v_oneview_media_and_conversion ;;
 
 
   dimension: primary_key {
@@ -179,7 +179,7 @@ view: channelmix_demo_oneview_media_and_conversion {
   measure: cost_per_conversion {
     type: number
 
-     sql: CASE WHEN (${total_conversions} != 0) THEN 1.0* (${total_cost}/${total_conversions})
+    sql: CASE WHEN (${total_conversions} != 0) THEN 1.0* (${total_cost}/${total_conversions})
           ELSE 0
            END;;
     value_format_name: big_money_format
@@ -328,7 +328,7 @@ view: channelmix_demo_oneview_media_and_conversion {
     type: string
     sql:
     CASE
-    WHEN {% parameter timeframe_picker %} = 'Date' THEN (TO_CHAR(DATE_TRUNC('day', channelmix_demo_oneview_media_and_conversion.report_date ), 'YYYY-MM-DD'))
+    WHEN {% parameter timeframe_picker %} = 'Date' THEN (TO_CHAR(DATE_TRUNC('day', v_oneview_media_and_conversion.report_date ), 'YYYY-MM-DD'))
     WHEN {% parameter timeframe_picker %} = 'Week' THEN ${report_week}
     WHEN {% parameter timeframe_picker %} = 'Month' THEN ${report_month}
     WHEN {% parameter timeframe_picker %} = 'Quarter' THEN ${report_quarter}

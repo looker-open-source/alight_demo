@@ -1,4 +1,4 @@
-connection: "channelmix_demo"
+connection: "channelmix"
 
 include: "*.view.lkml"                       # include all views in this project
 include: "*.dashboard.lookml"   # include a LookML dashboard called my_dashboard
@@ -30,6 +30,4 @@ named_value_format: big_money_format {
   strict_value_format: yes
 }
 
-explore: channelmix_demo_oneview_media_and_conversion {}
-
-explore: channelmix_demo_oneview_paid_search_ad {}
+explore: v_oneview_media_and_conversion {}
