@@ -224,7 +224,6 @@
     type: looker_line
     fields: [v_oneview_media_and_conversion.filtered_metric1, v_oneview_media_and_conversion.filtered_metric2,
       v_oneview_media_and_conversion.dynamic_timeframe]
-    filters: {}
     sorts: [v_oneview_media_and_conversion.dynamic_timeframe]
     limit: 500
     query_timezone: America/Los_Angeles
@@ -235,9 +234,8 @@
             id: v_oneview_media_and_conversion.filtered_metric1, name: Impression}],
         showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
         type: linear}, {label: !!null '', orientation: right, series: [{axisId: v_oneview_media_and_conversion.filtered_metric2,
-            id: v_oneview_media_and_conversion.filtered_metric2, name: Cost}],
-        showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
-        type: linear}]
+            id: v_oneview_media_and_conversion.filtered_metric2, name: Cost}], showLabels: true,
+        showValues: true, unpinAxis: false, tickDensity: default, type: linear}]
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
@@ -338,7 +336,7 @@
   - name: Date
     title: Date
     type: date_filter
-    default_value: 2019/12/01 to 2020/01/01
+    default_value: 2018/12/01 to 2019/01/01
     allow_multiple_values: true
     required: false
   - name: Metric 1
